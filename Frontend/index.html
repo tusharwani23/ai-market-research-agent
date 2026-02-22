@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Market Research Analyst</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+
+<body>
+
+  <!-- Ambient background orbs -->
+  <div class="bg-orbs">
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+    <div class="orb orb3"></div>
+  </div>
+
+  <div class="wrapper">
+
+    <!-- ── Header ────────────────────────────────────────────── -->
+    <header>
+      <div class="logo-pill"><span>✦</span> AI-Powered · Gemini 1.5 Flash</div>
+      <h1>Market Research Analyst</h1>
+      <p>Upload your annual business report PDF and receive structured, decision-ready insights powered by Gemini AI.
+      </p>
+    </header>
+
+    <!-- ── Upload Section ────────────────────────────────────── -->
+    <section class="upload-section">
+      <div class="upload-zone" id="drop-zone">
+        <input type="file" id="pdf-input" accept=".pdf" />
+        <span class="upload-icon">📄</span>
+        <h3>Drop your PDF here, or click to browse</h3>
+        <p>Accepts annual reports, business summaries, financial documents</p>
+        <div class="file-name-display" id="file-name-display">📎 <span id="file-name-text"></span></div>
+      </div>
+      <div style="text-align:center; margin-top: 28px;">
+        <button class="btn-analyze" id="analyze-btn" disabled>
+          <span>🔍</span> Analyze Report
+        </button>
+      </div>
+    </section>
+
+    <!-- ── Error Box ─────────────────────────────────────────── -->
+    <div id="error-box">⚠️ <span id="error-text"></span></div>
+
+    <!-- ── Loader ────────────────────────────────────────────── -->
+    <div id="loader">
+      <div class="spinner"></div>
+      <p id="loader-text">Extracting PDF text and analyzing with Gemini AI…</p>
+    </div>
+
+    <!-- ── Dashboard ─────────────────────────────────────────── -->
+    <div id="dashboard">
+
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:32px;">
+        <div>
+          <p class="section-label">📊 Analysis Report</p>
+          <h2 style="font-size:1.5rem; font-weight:700;">Business Insights Dashboard</h2>
+        </div>
+        <button class="btn-reset" id="reset-btn">↩ Analyze Another</button>
+      </div>
+
+      <!-- KPI Row -->
+      <div class="kpi-row" id="kpi-row">
+        <div class="kpi-card">
+          <div class="kpi-value" id="kpi-strong" style="color:var(--green)">—</div>
+          <div class="kpi-label">Strong Points</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-value" id="kpi-weak" style="color:var(--red)">—</div>
+          <div class="kpi-label">Weak Points</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-value" id="kpi-suggestions" style="color:var(--blue)">—</div>
+          <div class="kpi-label">Smart Suggestions</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-value" id="kpi-moves" style="color:var(--purple)">—</div>
+          <div class="kpi-label">Strategic Moves</div>
+        </div>
+      </div>
+
+      <!-- Situation Card -->
+      <div class="situation-card">
+        <div class="card-title">🏢 Current Business Situation</div>
+        <p id="situation-text"></p>
+      </div>
+
+      <!-- Strong & Weak -->
+      <div class="grid-2">
+        <div class="insight-card green-card">
+          <div class="card-title">✅ Strong Points</div>
+          <ul class="badge-list" id="strong-list"></ul>
+        </div>
+        <div class="insight-card red-card">
+          <div class="card-title">⚠️ Weak Points</div>
+          <ul class="badge-list" id="weak-list"></ul>
+        </div>
+      </div>
+
+      <!-- Charts -->
+      <div class="charts-row">
+        <div class="chart-card">
+          <div class="card-title">📈 Strengths vs Weaknesses</div>
+          <canvas id="radar-chart"></canvas>
+        </div>
+        <div class="chart-card">
+          <div class="card-title">📊 Insights Overview</div>
+          <canvas id="bar-chart"></canvas>
+        </div>
+      </div>
+
+      <!-- Suggestions & Moves -->
+      <div class="grid-2">
+        <div class="insight-card blue-card">
+          <div class="card-title">💡 Smart Suggestions</div>
+          <ul class="badge-list" id="suggestions-list"></ul>
+        </div>
+        <div class="insight-card purple-card">
+          <div class="card-title">🚀 Next Strategic Moves</div>
+          <ul class="badge-list" id="moves-list"></ul>
+        </div>
+      </div>
+
+    </div><!-- /#dashboard -->
+
+    <footer>
+      <p>Powered by <strong>Gemini 1.5 Flash</strong> · Built with Antigravity · Data is analyzed locally and not
+        stored.</p>
+    </footer>
+
+  </div><!-- /.wrapper -->
+
+  <script src="/static/script.js"></script>
+
+</body>
+
+</html>
